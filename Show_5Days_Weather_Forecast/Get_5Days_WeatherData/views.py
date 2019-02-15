@@ -3,7 +3,7 @@ from django.http import HttpRequest
 from django.views.generic import (TemplateView, FormView, ListView)
 
 from .forms import InputCityForm
-from .models import WeatherData
+from .models import WeatherData, CityData
 
 # backends
 from .Get5Days_WeatherForecast import getWeatherForecast
@@ -16,7 +16,9 @@ class SelectView(FormView):
     # success_url = '/weather/'
 
     def form_valid(self, form, **kwargs):
-        city_name = form.cleaned_data['input_city_name']
+        city_name = form.cleaned_data['citydata']
+        city_name=city_name.split(':')
+        city_name=city_name[1].split('}')
         [forecastDatetime, weatherDescription, temperature, rainfall] = \
             getWeatherForecast(city_name)
         weather_data = list(zip(forecastDatetime, weatherDescription, temperature, rainfall))
@@ -32,7 +34,9 @@ class WeatherView(FormView):
 
     def form_valid(self, form, **kwargs):
         # import pdb; pdb.set_trace()
-        city_name = form.cleaned_data['input_city_name']
+        city_name = form.cleaned_data['citydata']
+        city_name=city_name.split(':')
+        city_name=city_name[1].split('}')
         [forecastDatetime, weatherDescription, temperature, rainfall] = \
             getWeatherForecast(city_name)
         weather_data = list(zip(forecastDatetime, weatherDescription, temperature, rainfall))

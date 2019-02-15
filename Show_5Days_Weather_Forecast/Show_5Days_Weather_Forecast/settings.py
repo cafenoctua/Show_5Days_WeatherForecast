@@ -37,9 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Get_5Days_WeatherData.apps.Get5DaysWeatherdataConfig',
     'bootstrap3',
     'crispy_forms',
+    'rest_framework',
+    'django_filters',
+    'Get_5Days_WeatherData.apps.Get5DaysWeatherdataConfig',
 ]
 
 MIDDLEWARE = [
