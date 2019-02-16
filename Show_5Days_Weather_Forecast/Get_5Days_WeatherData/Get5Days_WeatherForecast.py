@@ -11,7 +11,7 @@ import sys
 from pytz import timezone
 from decimal import Decimal, ROUND_HALF_UP, ROUND_HALF_EVEN
 
-API_KEY = '05b87d5ef4d2346cc2b92fd89c99d13f'
+API_KEY = 'YourAPIKeys'
 BASE_URL = "http://api.openweathermap.org/data/2.5/forecast"
 API_URL = BASE_URL + '?id={id}&APPID={key}'
 
